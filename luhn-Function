@@ -48,6 +48,38 @@ const findInvalidCards = (nestedArray) => {
   return invalidCards;
 };
 
+const idInvalidCardCompanies = (invalidCards) => {
+  const companies = [];
+
+  for (let i = 0; i < invalidCards.length; i++) {
+    const firstDigit = invalidCards[i][0];
+    let company = '';
+
+    switch (firstDigit) {
+      case 3:
+        company = 'Amex (American Express)';
+        break;
+      case 4:
+        company = 'Visa';
+        break;
+      case 5:
+        company = 'Mastercard';
+        break;
+      case 6:
+        company = 'Discover';
+        break;
+      default:
+        console.log('Company not found');
+    }
+
+    if (company && !companies.includes(company)) {
+      companies.push(company);
+    }
+  }
+
+  return companies;
+};
+
 
 const invalidCards = findInvalidCards(batch);
 const companies = idInvalidCardCompanies(invalidCards);
